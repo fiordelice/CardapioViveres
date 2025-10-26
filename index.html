@@ -114,7 +114,6 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
   border-radius: 10px;
   transition: transform 0.3s ease;
 }
-
 /* Bebidas e produtos especiais */
 .thumb img[src*="agua"],
 .thumb img[src*="aguagas"],
@@ -124,35 +123,87 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
 .thumb img[src*="cerveja"],
 .thumb img[src*="suco"],
 .thumb img[src*="vece"] {
-  object-fit: contain;
-  width: auto;
-  max-width: 90%;
-  max-height: 270px;
-  margin: 0 auto;
   display: block;
-  padding: 8px;
+  margin: 0 auto;
+  width: 150px;        /* define largura fixa menor */
+  height: auto;        /* mantém proporção */
+  object-fit: contain; /* nunca corta a imagem */
+  padding: 5px;
   transition: transform 0.3s ease, padding 0.3s ease;
 }
 
-/* Efeito hover para todas as imagens */
+/* Efeito hover */
 .thumb img:hover {
+  transform: scale(1.03);
+}
+/* Ajuste específico para água, Vece e suco */
+.thumb img[src*="agua"],
+.thumb img[src*="suco"],
+.thumb img[src*="vece"] {
+  display: block;
+  margin: 0 auto;
+  width: 100px;       /* largura menor e controlada */
+  height: auto;       /* mantém proporção */
+  object-fit: contain; /* não corta nada */
+  padding: 5px;
+  transition: transform 0.3s ease, padding 0.3s ease;
+}
+.thumb img[src*="aguagas"]
+{
+  display: block;
+  margin: 0 auto;
+  width: 150px;       /* largura menor e controlada */
+  height: auto;       /* mantém proporção */
+  object-fit: contain; /* não corta nada */
+  padding: 5px;
+  transition: transform 0.3s ease, padding 0.3s ease;
+}
+
+
+
+.thumb img[src*="vece"] {
+  display: block;
+  margin: 0 auto;
+  width: 55px;       /* largura menor e controlada */
+  height: auto;       /* mantém proporção */
+  object-fit: contain; /* não corta nada */
+  padding: 5px;
+  transition: transform 0.3s ease, padding 0.3s ease;
+}
+
+/* Efeito hover */
+.thumb img[src*="agua"]:hover,
+.thumb img[src*="aguagas"]:hover,
+.thumb img[src*="suco"]:hover,
+.thumb img[src*="vece"]:hover {
   transform: scale(1.03);
 }
 
 /* Ajustes para celulares */
 @media(max-width: 480px) {
-  /* Bebidas */
+  .thumb img[src*="agua"],
+  .thumb img[src*="aguagas"],
+  .thumb img[src*="suco"],
+  .thumb img[src*="vece"] {
+    width: 100px;  /* ainda menor para celulares */
+    height: auto;
+    padding: 4px;
+  }
+}
+
+
+/* Ajustes para celulares */
+@media(max-width: 480px) {
   .thumb img[src*="agua"],
   .thumb img[src*="aguagas"],
   .thumb img[src*="sprite"],
   .thumb img[src*="coca"],
   .thumb img[src*="cocazero"],
   .thumb img[src*="cerveja"],
-  .thumb img[src*="suco"],
-  .thumb img[src*="vece"] {
-    max-height: 220px;
-    max-width: 80%;
-    padding: 6px;
+  .thumb img[src*="suco"] {
+    width: 350px;    /* ainda menor para celular */
+    height: auto;
+    padding: 4px;
   }
 
   /* Lanches, porções, sobremesas */
@@ -431,7 +482,7 @@ const menuItems = [
   // Clássicos
   { id: 1, name: 'Víveres Burguer', desc: 'Pão artesanal, burguer 150g, queijo mussarela, maionese da casa', price: 20.00, img: 'Víveres Burguer.jpg', badge: '', category: 'Lanches' },
   { id: 2, name: 'Víveres Salada', desc: 'Pão artesanal, burguer 150g, queijo mussarela, alface americana, tomate, cebola roxa, maionese da casa', price: 25.00, img: 'Víveres Salada.jpg', badge: '', category: 'Lanches' },
-  { id: 3, name: 'Víveres Bacon', desc: 'Pão artesanal, burguer 150g, bacon, queijo mussarela, alface americana, tomate, cebola roxa, maionese da casa', price: 27.90, img: 'Víveres Bacon.jpg', badge: '', category: 'Lanches' },
+  { id: 3, name: 'Víveres Bacon', desc: 'Pão artesanal, burguer 150g, bacon, queijo mussarela, alface americana, tomate, cebola roxa, maionese da casa', price: 27.90, img: 'Víveres Salada.jpg', badge: '', category: 'Lanches' },
 
   // Modernos
   { id: 4, name: 'Mussaburguer', desc: 'Pão artesanal, burguer 150g, mussarela empanada, picles, alface americana, bacon, maionese da casa', price: 31.90, img: 'lan.jpg', badge: '', category: 'Lanches' },
@@ -504,4 +555,3 @@ buttons.forEach(btn => {
 
 </body>
 </html>
-
