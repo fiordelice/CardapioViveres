@@ -95,49 +95,20 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
 /* Cards */
 .card { background:var(--dark); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:10px; box-shadow:0 6px 20px rgba(0,0,0,0.2); position:relative; transition:0.3s; }
 .card:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,0.4); }
-.thumb {
-  width: 100%;
-  aspect-ratio: 4/3;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #333;
-}
-
-.thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.3s ease;
-}
-
-/* Bebidas e produtos especiais */
+/* Todas as imagens de bebidas */
 .thumb img[src*="agua"],
 .thumb img[src*="aguagas"],
 .thumb img[src*="sprite"],
 .thumb img[src*="coca"],
 .thumb img[src*="cocazero"],
 .thumb img[src*="cerveja"],
-.thumb img[src*="suco"] {
-  object-fit: contain;
-  width: auto;
-  max-width: 90%;      /* largura máxima da imagem */
-  max-height: 270px;    /* altura máxima uniforme */
-  margin: 0 auto;       /* centraliza horizontalmente */
-  display: block;
-  padding: 5px;
-  transition: height 0.3s ease, padding 0.3s ease;
-}
-
-/* Imagem “vece” */
+.thumb img[src*="suco"],
 .thumb img[src*="vece"] {
-  object-fit: contain;
+  object-fit: contain;     /* mantém proporção sem cortar */
   width: auto;
-  max-width: 90%;
-  max-height: 270px;  /* mesma altura que as outras bebidas */
-  margin: 0 auto;
+  max-width: 90%;          /* largura máxima da imagem */
+  max-height: 270px;       /* altura uniforme */
+  margin: 0 auto;          /* centraliza horizontalmente */
   display: block;
   padding: 5px;
   transition: height 0.3s ease, padding 0.3s ease;
@@ -145,14 +116,6 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
 
 /* Ajustes para celulares */
 @media(max-width: 480px) {
-  .thumb img {
-    max-width: 90%;
-    height: auto;       /* mantém proporção */
-    margin: 0 auto;     /* centraliza horizontalmente */
-    object-fit: contain; 
-    padding: 5px;
-  }
-
   .thumb img[src*="agua"],
   .thumb img[src*="aguagas"],
   .thumb img[src*="sprite"],
@@ -161,7 +124,8 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
   .thumb img[src*="cerveja"],
   .thumb img[src*="suco"],
   .thumb img[src*="vece"] {
-    max-height: 220px;  /* altura boa para celular */
+    max-height: 220px;   /* altura boa para celular */
+    max-width: 80%;      /* mantém centralização e proporção */
   }
 }
 
