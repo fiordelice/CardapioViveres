@@ -95,7 +95,27 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
 /* Cards */
 .card { background:var(--dark); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:10px; box-shadow:0 6px 20px rgba(0,0,0,0.2); position:relative; transition:0.3s; }
 .card:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,0.4); }
-/* Todas as imagens de bebidas */
+.thumb {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #333;
+}
+
+/* Imagens gerais (lanches, porções, sobremesas) */
+.thumb img:not([src*="agua"]):not([src*="aguagas"]):not([src*="sprite"]):not([src*="coca"]):not([src*="cocazero"]):not([src*="cerveja"]):not([src*="suco"]):not([src*="vece"]) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* cobre todo o card */
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Bebidas e produtos especiais */
 .thumb img[src*="agua"],
 .thumb img[src*="aguagas"],
 .thumb img[src*="sprite"],
@@ -104,18 +124,24 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
 .thumb img[src*="cerveja"],
 .thumb img[src*="suco"],
 .thumb img[src*="vece"] {
-  object-fit: contain;     /* mantém proporção sem cortar */
+  object-fit: contain;
   width: auto;
-  max-width: 90%;          /* largura máxima da imagem */
-  max-height: 270px;       /* altura uniforme */
-  margin: 0 auto;          /* centraliza horizontalmente */
+  max-width: 90%;
+  max-height: 270px;
+  margin: 0 auto;
   display: block;
-  padding: 5px;
-  transition: height 0.3s ease, padding 0.3s ease;
+  padding: 8px;
+  transition: transform 0.3s ease, padding 0.3s ease;
+}
+
+/* Efeito hover para todas as imagens */
+.thumb img:hover {
+  transform: scale(1.03);
 }
 
 /* Ajustes para celulares */
 @media(max-width: 480px) {
+  /* Bebidas */
   .thumb img[src*="agua"],
   .thumb img[src*="aguagas"],
   .thumb img[src*="sprite"],
@@ -124,8 +150,16 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
   .thumb img[src*="cerveja"],
   .thumb img[src*="suco"],
   .thumb img[src*="vece"] {
-    max-height: 220px;   /* altura boa para celular */
-    max-width: 80%;      /* mantém centralização e proporção */
+    max-height: 220px;
+    max-width: 80%;
+    padding: 6px;
+  }
+
+  /* Lanches, porções, sobremesas */
+  .thumb img:not([src*="agua"]):not([src*="aguagas"]):not([src*="sprite"]):not([src*="coca"]):not([src*="cocazero"]):not([src*="cerveja"]):not([src*="suco"]):not([src*="vece"]) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
