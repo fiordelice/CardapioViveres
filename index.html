@@ -49,19 +49,25 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
 @media(max-width:980px) { 
   .menu { 
     grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); 
-    padding: 0 8px;
+    padding: 0 12px;
   } 
 }
 @media(max-width:760px) { 
   .menu { 
     grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); 
-    padding: 0 6px;
+    padding: 0 10px;
   } 
 }
 @media(max-width:480px) { 
   .menu { 
     grid-template-columns: 1fr; 
-    padding: 0 4px;
+    padding: 0 8px;
+  } 
+}
+@media(max-width:667px) { 
+  .menu { 
+    grid-template-columns: 1fr; 
+    padding: 20px 20px;
   } 
 }
 
@@ -158,7 +164,200 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
   padding: 5px;
   transition: transform 0.3s ease, padding 0.3s ease;
 }
+/* ===== RESPONSIVIDADE ESPECÍFICA PARA CELULARES ===== */
 
+/* iPhone SE 1ª geração / 5 / 5s / 5c */
+@media only screen and (max-width: 320px) {
+  body { font-size: 0.75rem; }
+  .menu { grid-template-columns: 1fr; gap: 8px; }
+  .thumb img { width: 80px; height: auto; }
+  .category-filter button, .filter-buttons button { font-size: 0.7rem; padding: 4px 8px; }
+}
+
+/* iPhone 6 / 7 / 8 / SE 2ª e 3ª geração */
+@media only screen and (min-width: 321px) and (max-width: 375px) {
+  body { font-size: 0.8rem; }
+  .menu { grid-template-columns: 1fr; gap: 10px; }
+  .thumb img { width: 90px; height: auto; }
+  .category-filter button, .filter-buttons button { font-size: 0.75rem; padding: 5px 10px; }
+}
+
+/* iPhone X / XS / 11 Pro */
+@media only screen and (min-width: 376px) and (max-width: 414px) {
+  body { font-size: 0.85rem; }
+  .menu { grid-template-columns: 1fr; gap: 12px; }
+  .thumb img { width: 100px; height: auto; }
+  .category-filter button, .filter-buttons button { font-size: 0.8rem; padding: 6px 12px; }
+}
+
+/* iPhone 12 / 13 / 14 / 15 / 16 (normal) */
+@media only screen and (min-width: 415px) and (max-width: 430px) {
+  body { font-size: 0.9rem; }
+  .menu { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+  .thumb img { width: 110px; height: auto; }
+  .category-filter button, .filter-buttons button { font-size: 0.85rem; padding: 7px 14px; }
+}
+
+/* iPhone 12 / 13 / 14 / 15 / 16 Pro Max */
+@media only screen and (min-width: 431px) and (max-width: 480px) {
+  body { font-size: 0.95rem; }
+  .menu { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .thumb img { width: 120px; height: auto; }
+  .category-filter button, .filter-buttons button { font-size: 0.9rem; padding: 8px 16px; }
+}
+
+/* Samsung Galaxy S / A / Note linhas médias e grandes */
+@media only screen and (min-width: 481px) and (max-width: 540px) {
+  body { font-size: 1rem; }
+  .menu { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+  .thumb img { width: 130px; height: auto; }
+}
+
+/* Samsung grandes e Motorola (ex: Edge, Plus, Max) */
+@media only screen and (min-width: 541px) and (max-width: 600px) {
+  body { font-size: 1.05rem; }
+  .menu { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .thumb img { width: 140px; height: auto; }
+}
+
+/* Motorola grande / telas grandes Android > 6" */
+@media only screen and (min-width: 601px) and (max-width: 720px) {
+  body { font-size: 1.1rem; }
+  .menu { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .thumb img { width: 160px; height: auto; }
+}
+
+/* Todos celulares muito grandes (6,5" +) */
+@media only screen and (min-width: 721px) and (max-width: 820px) {
+  body { font-size: 1.15rem; }
+  .menu { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+  .thumb img { width: 180px; height: auto; }
+}
+
+/* Ajustes finais globais para ultra wide mobile ou dobráveis */
+@media only screen and (min-width: 821px) and (max-width: 1024px) {
+  body { font-size: 1.2rem; }
+  .menu { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .thumb img { width: 200px; height: auto; }
+}
+/* Samsung Galaxy S8+, S9+, S10+ e outros grandes Android */
+@media only screen and (min-width: 360px) and (max-width: 414px) {
+  body { font-size: 0.9rem; }
+  .menu { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+  .thumb img { width: 110px; height: auto; }
+  .category-filter button, .filter-buttons button { font-size: 0.85rem; padding: 6px 12px; }
+}
+
+/* Samsung Galaxy Note 8/9/10+ e outros phablets grandes */
+@media only screen and (min-width: 415px) and (max-width: 480px) {
+  body { font-size: 0.95rem; }
+  .menu { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .thumb img { width: 120px; height: auto; }
+  .category-filter button, .filter-buttons button { font-size: 0.9rem; padding: 7px 14px; }
+}
+/* ===== AJUSTE GLOBAL PARA TELAS PEQUENAS ===== */
+@media only screen and (max-width: 414px) { /* cobre iPhone SE, 6/7/8, 11 Pro, Galaxy S8/S9/S10 pequenas */
+  /* Evita overflow horizontal */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* evita scroll horizontal */
+    font-size: 0.85rem;
+  }
+
+  /* Header e Navbar */
+  header, .navbar {
+    padding: 8px 10px;
+    width: 100%;
+  }
+  .navbar {
+    justify-content: center; /* centraliza logo e brand */
+  }
+  .logo-area {
+    gap: 6px;
+  }
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  footer {
+    padding: 12px 10px;
+  }
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  /* Container e menu */
+  .container, .menu {
+    max-width: 100%; /* remove max-width grande */
+    padding: 0 6px;
+    margin: 0 auto;
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centraliza os cards */
+    gap: 12px;
+  }
+  .card {
+    width: 100%;
+    max-width: 320px; /* limita o tamanho do card */
+    margin: 0 auto; /* centraliza */
+  }
+
+  /* Imagens */
+  .thumb img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Botões de filtro */
+  .category-filter button, .filter-buttons button {
+    flex: 1 1 100%;
+    font-size: 0.75rem;
+    padding: 6px 8px;
+    margin-bottom: 6px;
+  }
+
+  /* Balcão message */
+  .balcao-msg {
+    max-width: 90%;
+    font-size: 0.8rem;
+    padding: 8px 10px;
+    margin: 10px auto 16px;
+  }
+}
+
+/* ===== PARA CELULARES MÉDIOS (iPhone X, 11, 12, 13, 14, 15) ===== */
+@media only screen and (min-width: 415px) and (max-width: 768px) {
+  body { font-size: 0.9rem; }
+  .navbar, header { padding: 10px 12px; }
+  .brand-name { font-size: 1.2rem; }
+  .menu { gap: 14px; }
+  .card { max-width: 360px; }
+  .category-filter button, .filter-buttons button { font-size: 0.8rem; padding: 7px 10px; }
+  .balcao-msg { max-width: 95%; font-size: 0.85rem; padding: 10px 12px; }
+}
+
+/* ===== PARA GRANDES SAMSUNG / MOTOROLA / GALAXY+ ===== */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  body { font-size: 0.95rem; }
+  .navbar, header { padding: 12px 16px; }
+  .brand-name { font-size: 1.3rem; }
+  .menu { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .card { max-width: 380px; margin: 0 auto; }
+  .category-filter button, .filter-buttons button { font-size: 0.85rem; padding: 8px 12px; }
+  .balcao-msg { font-size: 0.9rem; padding: 12px 14px; max-width: 95%; }
+}
 
 
 .thumb img[src*="vece"] {
@@ -211,6 +410,57 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+/* ===== BOTÕES DE FILTRO & CATEGORIA ===== */
+.category-filter, .filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px; /* espaço lateral para não colar na borda */
+  margin: 0 auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.category-filter button, .filter-buttons button {
+  background: var(--dark);
+  color: var(--orange);
+  border: 2px solid var(--orange);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;      /* garante que o botão não fique muito estreito */
+  text-align: center;
+}
+
+.category-filter button:hover,
+.category-filter button.active,
+.filter-buttons button:hover,
+.filter-buttons button.active {
+  background: var(--orange);
+  color: var(--black);
+  transform: scale(1.05);
+}
+
+/* ===== AJUSTE PARA TELAS PEQUENAS ===== */
+@media only screen and (max-width: 414px) {
+  .category-filter button, .filter-buttons button {
+    flex: 1 1 calc(50% - 12px); /* 2 botões por linha com gap */
+    padding: 6px 8px;
+    font-size: 0.75rem;
+    min-width: unset;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .category-filter button, .filter-buttons button {
+    flex: 1 1 100%; /* 1 botão por linha */
+    padding: 5px 6px;
+    font-size: 0.7rem;
   }
 }
 
@@ -410,6 +660,71 @@ border: 1.5px solid #ff8c00; /* borda um pouco mais suave */
     margin: 10px auto 20px;
   }
 }
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
+  margin: 16px auto 20px; /* aqui você controla o espaçamento superior e inferior */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+/* ===== GRID DE CARDS CENTRALIZADO ===== */
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  padding: 0 10px;
+  justify-content: center; /* garante que os cards fiquem centralizados */
+  margin: 0 auto;          /* centraliza o grid no container */
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+/* Ajuste para telas menores */
+@media(max-width: 980px) { 
+  .menu { 
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  } 
+}
+@media(max-width: 760px) { 
+  .menu { 
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  } 
+}
+@media(max-width: 480px) { 
+  .menu { 
+    grid-template-columns: 1fr; 
+    padding: 0 12px; /* espaço lateral para não encostar nas bordas */
+  } 
+}
+/* Grid de cards centralizado */
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  justify-content: center; /* centraliza os cards horizontalmente */
+  margin: 0 auto;
+  max-width: 1200px; /* evita que se espalhem demais em telas grandes */
+  padding: 0 25px;   /* espaço lateral mínimo */
+  box-sizing: border-box;
+}
+
+/* Ajustes para telas muito pequenas (iPhone SE, 6, 7, 8) */
+@media (max-width: 375px) {
+  .menu {
+    grid-template-columns: 1fr; /* um card por linha */
+    padding: 0 12px;           /* mais espaço lateral */
+  }
+}
+
+/* Ajuste para telas gigantes (Pro Max, Galaxy grandes) */
+@media (min-width: 1440px) {
+  .menu {
+    max-width: 1400px; /* garante centralização sem espalhar os cards */
+  }
+}
 
 
 </style>
@@ -428,6 +743,7 @@ border: 1.5px solid #ff8c00; /* borda um pouco mais suave */
 
 <!-- Filtros de categoria -->
 <div class="category-filter">
+  <button onclick="filterMenu('Todos')">Todos</button>
   <button onclick="filterMenu('Lanches')">Lanches</button>
   <button onclick="filterMenu('Porções')">Porções</button>
   <button onclick="filterMenu('Bebidas')">Bebidas</button>
