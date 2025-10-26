@@ -15,8 +15,81 @@ header { background:var(--black); border-bottom:2px solid var(--orange); padding
 header .logo { width:48px; height:48px; object-fit:contain; border-radius:8px; }
 header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
 
+/* Mensagem */
+.notice {
+  background: var(--orange);
+  color: var(--black);
+  text-align: center;
+  font-weight: 600;
+  padding: 10px;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
 /* Container e menu */
-.container { max-width:1200px; margin:12px auto; padding:0 16px; display:grid; grid-template-columns:1fr; gap:24px; }
+/* Container geral */
+.container {
+  max-width: 1200px;
+  margin: 12px auto;
+  padding: 0 20px; /* aumenta o espaçamento lateral */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Menu de cards */
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  padding: 0 10px; /* espaçamento extra dentro do grid */
+}
+
+/* Responsividade */
+@media(max-width:980px) { 
+  .menu { 
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); 
+    padding: 0 8px;
+  } 
+}
+@media(max-width:760px) { 
+  .menu { 
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); 
+    padding: 0 6px;
+  } 
+}
+@media(max-width:480px) { 
+  .menu { 
+    grid-template-columns: 1fr; 
+    padding: 0 4px;
+  } 
+}
+
+
+/* Botões de filtro */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.filter-buttons button {
+  background: var(--dark);
+  color: var(--orange);
+  border: 2px solid var(--orange);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.filter-buttons button:hover,
+.filter-buttons button.active {
+  background: var(--orange);
+  color: var(--black);
+}
+
+/* Menu */
 .menu { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:18px; }
 
 /* Cards */
@@ -24,34 +97,235 @@ header .site-name { font-size:1.5rem; font-weight:700; color:var(--orange); }
 .card:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,0.4); }
 .thumb { width:100%; aspect-ratio:4/3; border-radius:10px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:#333; }
 .thumb img { width:100%; height:100%; object-fit:cover; }
-.thumb img[src*="agua"], .thumb img[src*="aguagas"], .thumb img[src*="sprite"], .thumb img[src*="coca"], .thumb img[src*="guarana"], .thumb img[src*="cocazero"], .thumb img[src*="cerveja"], .thumb img[src*="suco"] { object-fit:contain; height:160px; padding:5px; transition:height 0.3s ease, padding 0.3s ease; }
-
+.thumb img[src*="agua"], .thumb img[src*="aguagas"], .thumb img[src*="sprite"], .thumb img[src*="coca"], .thumb img[src*="cocazero"], .thumb img[src*="cerveja"], .thumb img[src*="suco"] { object-fit:contain; height:160px; padding:5px; transition:height 0.3s ease, padding 0.3s ease; }
+.thumb img[src*="vece"] { object-fit:contain; height:210px; padding:5px; transition:height 0.3s ease, padding 0.3s ease; }
 .badge { position:absolute; top:8px; left:8px; background:var(--orange); color:#fff; font-size:0.75rem; padding:4px 8px; border-radius:8px; }
 .name { font-weight:700; color:var(--orange); }
 .price { font-weight:800; color:var(--orange); }
 .desc { font-size:0.92rem; color:#ccc; margin-top:6px; }
 
-/* Footer */
-footer { text-align:center; padding:12px 0; border-top:2px solid var(--orange); margin-top:24px; color:#ccc; font-size:0.9rem; }
+/* Footer compacto */
+footer {
+  background: #111;
+  border-top: 2px solid var(--orange);
+  color: #ccc;
+  font-family: 'Inter', sans-serif;
+  padding: 20px 16px; /* menor padding */
+  margin-top: 20px;  /* menor espaço acima */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px; /* menos espaçamento interno */
+  text-align: center;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* menor espaço entre logo e texto */
+}
+
+.footer-logo img {
+  width: 35px;   /* logo um pouco menor */
+  height: 35px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.footer-title {
+  font-weight: 700;
+  font-size: 1.1rem; /* menor tamanho da fonte */
+  color: var(--orange);
+}
+
+.footer-text {
+  font-size: 0.85rem; /* menor fonte */
+  color: #aaa;
+}
+
+/* Responsividade */
+@media (min-width: 480px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
 
 /* Responsividade */
 @media(max-width:980px) { .menu { grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); } }
 @media(max-width:760px) { .menu { grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); } }
-@media(max-width:480px) { .menu { grid-template-columns:1fr; } .thumb img[src*="agua"], .thumb img[src*="aguagas"],  .thumb img[src*="sprite"],.thumb img[src*="coca"], .thumb img[src*="guarana"], .thumb img[src*="cocazero"], .thumb img[src*="cerveja"], .thumb img[src*="suco"] { height: 220px; padding:8px; } }
+@media(max-width:480px) { 
+  .menu { grid-template-columns:1fr; } 
+  .thumb img[src*="agua"], .thumb img[src*="aguagas"],  .thumb img[src*="sprite"],.thumb img[src*="coca"], .thumb img[src*="guarana"], .thumb img[src*="cocazero"], .thumb img[src*="cerveja"], .thumb img[src*="suco"] { height: 220px; padding:8px; } 
+  .filter-buttons button { flex:1 1 calc(50% - 10px); } 
+}
+/* ===== NAVBAR MODERNA ===== */
+header {
+  background: #111;
+  border-bottom: 2px solid var(--orange);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 22px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #eee;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--orange);
+  transform: scale(1.05);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 16px;
+  }
+  .brand-name {
+    font-size: 1.2rem;
+  }
+}
+
+.category-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px auto 8px;
+}
+
+.category-filter button {
+background: #222; /* um pouco mais escuro */
+border: 1.5px solid #ff8c00; /* borda um pouco mais suave */
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.category-filter button:hover {
+  background: #ff6600;
+}
+
+.balcao-msg {
+  text-align: center;
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.balcao-msg {
+  display: block;
+  margin: 16px auto 28px;
+  text-align: center;
+  color: white;
+  font-size: 1rem;
+  font-style: italic;
+  background: #ff6600;
+  padding: 10px 18px;
+  border-radius: 10px;
+  max-width: 600px;
+  line-height: 1.5;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 768px) {
+  .balcao-msg {
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    margin: 12px auto 24px;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .balcao-msg {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    margin: 10px auto 20px;
+  }
+}
+
+
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-content">
-    <div class="left-header">
-      <img src="logo.png" alt="Logo" class="logo">
-      <div class="site-name">𝑽í𝒗𝒆𝒓𝒆𝒔 𝑩𝒖𝒓𝒈𝒖𝒆𝒓</div>
+  <div class="navbar">
+    <div class="logo-area">
+      <img src="logo.png" alt="Logo Víveres" class="logo">
+      <span class="brand-name">𝑽í𝒗𝒆𝒓𝒆𝒔 𝑩𝒖𝒓𝒈𝒖𝒆𝒓</span>
     </div>
+
   </div>
 </header>
 
-<div class="container">
+<!-- Filtros de categoria -->
+<div class="category-filter">
+  <button onclick="filterMenu('Lanches')">Lanches</button>
+  <button onclick="filterMenu('Porções')">Porções</button>
+  <button onclick="filterMenu('Bebidas')">Bebidas</button>
+  <button onclick="filterMenu('Sobremesa')">Sobremesa</button>
+</div>
+
+<p class="balcao-msg">
+  Dirija-se ao balcão para fazer seu pedido e retirar sua senha.
+  Agradecemos a sua preferência! 
+</p>
+
+
+
+
   <div class="menu" id="menu"></div>
 </div>
 
@@ -65,74 +339,43 @@ footer { text-align:center; padding:12px 0; border-top:2px solid var(--orange); 
   </div>
 </footer>
 
-<style>
-footer {
-  background: #111;
-  border-top: 2px solid var(--orange);
-  color: #ccc;
-  font-family: 'Inter', sans-serif;
-  padding: 20px 16px;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-}
-
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer-logo img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  border-radius: 6px;
-}
-
-.footer-title {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--orange);
-}
-
-.footer-text {
-  font-size: 0.9rem;
-  color: #aaa;
-}
-
-@media(min-width:480px) {
-  .footer-container {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-  }
-}
-</style>
-
 
 <script>
+  function filterMenu(category) {
+  // Remove destaque do botão anterior
+  document.querySelectorAll('.category-filter button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  // Adiciona destaque ao botão clicado
+  const clickedButton = Array.from(document.querySelectorAll('.category-filter button'))
+    .find(btn => btn.textContent === category || (category === 'Todos' && btn.textContent === 'Todos'));
+  if (clickedButton) clickedButton.classList.add('active');
+
+  // Filtra os itens conforme a categoria
+  const itemsToShow = category === 'Todos'
+    ? menuItems
+    : menuItems.filter(item => item.category === category);
+
+  // Exibe os itens filtrados
+  displayMenu(itemsToShow);
+}
+
+
 const menuItems = [
-      { id: 1, name: 'Víveres Burguer', desc: 'Pão artesanal, burguer 150g, queijo mussarela, maionese da casa', price: 20.00, img: 'Víveres Burguer.jpg', badge: '', category: 'Lanches' },
+  { id: 1, name: 'Víveres Burguer', desc: 'Pão artesanal, burguer 150g, queijo mussarela, maionese da casa', price: 20.00, img: 'Víveres Burguer.jpg', badge: '', category: 'Lanches' },
+       { id: 6, name: 'G B I', desc: 'Pão artesanal, burguer 150g, bacon, queijo cheddar, maionese da casa', price: 24.90, img: 'GBI.jpg', badge: 'Mais pedido', category: 'Lanches' },
       { id: 2, name: 'Víveres Salada', desc: 'Pão artesanal, burguer 150g, queijo mussarela, alface americana, tomate, cebola roxa, maionese da casa', price: 25.00, img: 'Víveres Salada.jpg', badge: '', category: 'Lanches' },
-      { id: 3, name: 'Víveres Bacon', desc: 'Pão artesanal, burguer 150g, bacon, queijo mussarela, alface americana, tomate, cebola roxa, maionese da casa', price: 27.90, img: 'Víveres Bacon.jpg', badge: '', category: 'Lanches' },
-      { id: 4, name: 'Mussaburguer', desc: 'Pão artesanal, burguer 150g, mussarela empanada, picles, alface americana, bacon, maionese da casa', price: 31.90, img: 'Mussaburguer.jpg', badge: '', category: 'Lanches' },
-      { id: 5, name: 'Preferido', desc: 'Pão artesanal, burguer 150g (2x), bacon, queijo cheddar, cebola roxa, maionese da casa', price: 37.00, img: 'Preferido.jpg', badge: 'Preferido', category: 'Lanches' },
-      { id: 6, name: 'G B I', desc: 'Pão artesanal, burguer 150g, bacon, queijo cheddar, maionese da casa', price: 24.90, img: 'GBI.jpg', badge: 'Mais pedido', category: 'Lanches' },
-      { id: 7, name: 'Cheddar Melt', desc: 'Pão artesanal, burguer 150g, cheddar cremoso, picles, farofa de bacon', price: 30.00, img: 'Cheddar Melt.jpg', badge: '', category: 'Lanches' },
-      { id: 8, name: 'Supreme', desc: 'Pão artesanal, burguer 150g, queijo cheddar, onion rings, molho BBQ', price: 29.00, img: 'Supreme.jpg', badge: 'Novo', category: 'Lanches' },
-      { id: 9, name: 'Víveres Crispy', desc: 'Pão artesanal, burguer 150g, queijo mussarela, cebola crispy, alface americana, mel, maionese da casa', price: 32.00, img: 'Víveres Crispy.jpg', badge: '', category: 'Lanches' },
       { id: 10, name: 'Víveres Chicken', desc: 'Pão artesanal, burguer de frango, queijo mussarela, tomate, picles, alface americana, molho especial', price: 26.90, img: 'Víveres Chicken.jpg', badge: '', category: 'Lanches' },
-      { id: 11, name: 'Víveres Kids', desc: '1 Mini burguer + 1 mini porção de batata smile + 1 Coca-Cola 200ml ou Suco Kapô + brinde', price: 29.90, img: 'Víveres Kids.jpg', badge: '', category: 'Lanches' },
+      { id: 3, name: 'Víveres Bacon', desc: 'Pão artesanal, burguer 150g, bacon, queijo mussarela, alface americana, tomate, cebola roxa, maionese da casa', price: 27.90, img: 'Víveres Salada.jpg', badge: '', category: 'Lanches' },
+      { id: 8, name: 'Supreme', desc: 'Pão artesanal, burguer 150g, queijo cheddar, onion rings, molho BBQ', price: 29.00, img: 'Supreme.jpg', badge: 'Novo', category: 'Lanches' },
+      { id: 7, name: 'Cheddar Melt', desc: 'Pão artesanal, burguer 150g, cheddar cremoso, picles, farofa de bacon', price: 30.00, img: 'Cheddar Melt.jpg', badge: '', category: 'Lanches' },
+      { id: 4, name: 'Mussaburguer', desc: 'Pão artesanal, burguer 150g, mussarela empanada, picles, alface americana, bacon, maionese da casa', price: 31.90, img: 'lan.jpg', badge: '', category: 'Lanches' },
+      { id: 9, name: 'Víveres Crispy', desc: 'Pão artesanal, burguer 150g, queijo mussarela, cebola crispy, alface americana, mel, maionese da casa', price: 32.00, img: 'Víveres Crispy.jpg', badge: '', category: 'Lanches' },
+      { id: 5, name: 'Preferido', desc: 'Pão artesanal, burguer 150g (2x), bacon, queijo cheddar, cebola roxa, maionese da casa', price: 37.00, img: 'Preferido.jpg', badge: 'Preferido', category: 'Lanches' },
+      { id: 11, name: 'Víveres Kids', desc: '1 Mini burguer + 1 mini porção de batata smile + 1 Coca-Cola 200ml ou Suco Kapô + brinde', price: 29.90, img: 'kids.jpg', badge: '', category: 'Lanches' },
       { id: 21, name: 'Batata Frita', desc: 'Porção individual de batata frita crocante', price: 8.00, img: 'Batata frita.jpg', badge: '', category: 'Porções' },
-      { id: 22, name: 'Batata Crinkle (ondulada)', desc: 'Porção individual de batata crinkle ondulada', price: 9.00, img: 'Batata Crinkle (ondulada).jpg', badge: '', category: 'Porções' },
+      { id: 22, name: 'Batata Crinkle (ondulada)', desc: 'Porção individual de batata crinkle ondulada', price: 9.00, img: 'batataon.jpg', badge: '', category: 'Porções' },
       { id: 23, name: 'Batata Frita c/ Cheddar e Farofa de Bacon', desc: 'Porção individual de batata frita com cheddar e farofa de bacon', price: 13.90, img: 'batata.jpg', badge: '', category: 'Porções' },
       { id: 24, name: 'Batata Smile (carinha)', desc: '8 unidades, acompanha molho especial', price: 10.90, img: 'Batata Smile.jpg', badge: '', category: 'Porções' },
       { id: 25, name: 'Anéis de Cebola', desc: '8 unidades, acompanha molho barbecue', price: 9.90, img: 'Anéis de Cebola.jpg', badge: '', category: 'Porções' },
@@ -141,15 +384,15 @@ const menuItems = [
       { id: 41, name: 'Água', desc: 'Garrafa de água mineral', price: 4.00, img: 'agua.png', badge: '', category: 'Bebidas' },
       { id: 42, name: 'Água com Gás', desc: 'Garrafa de água com gás', price: 4.50, img: 'aguagas.png', badge: '', category: 'Bebidas' },
       { id: 43, name: 'Refrigerante Lata 350ml', desc: 'Coca-Cola, Fanta, Sprite e outros sabores', price: 6.00, img: 'guaranas.png', badge: '', category: 'Bebidas' },
-      { id: 44, name: 'Refrigerante 2L Vencetex', desc: 'Refrigerante Vencetex 2 litros', price: 8.00, img: 'guarana.png', badge: '', category: 'Bebidas' },
-        { id: 44, name: 'Refrigerante Sprite 2L', desc: 'Refrigerante Sprite 2 litros', price: 12.00, img: 'sprite.png', badge: '', category: 'Bebidas' },
+      { id: 44, name: 'Refrigerante Vencetex 2L ', desc: 'Refrigerante Vencetex 2 litros', price: 8.00, img: 'vece.png', badge: '', category: 'Bebidas' },
+      { id: 44, name: 'Refrigerante Sprite 2L', desc: 'Refrigerante Sprite 2 litros', price: 12.00, img: 'sprite.png', badge: '', category: 'Bebidas' },
       { id: 45, name: 'Coca-Cola 2L', desc: 'Refrigerante Coca-Cola 2 litros', price: 12.00, img: 'coca.png', badge: '', category: 'Bebidas' },
       { id: 46, name: 'Fanta Laranja 2L', desc: 'Refrigerante Fanta Laranja 2 litros', price: 12.00, img: 'fantal.png', badge: '', category: 'Bebidas' },
       { id: 47, name: 'Fanta Uva 2L', desc: 'Refrigerante Uva Laranja 2 litros', price: 12.00, img: 'fantau.png', badge: '', category: 'Bebidas' },
       { id: 48, name: 'Coca-Cola Zero 2L', desc: 'Refrigerante Coca-Cola Zero 2 litros', price: 15.00, img: 'cocazero.png', badge: '', category: 'Bebidas' },
       { id: 49, name: 'Cerveja Long Neck 330ml', desc: 'Heineken, Budweiser, Bud, Eisenbahn', price: 10.00, img: 'cerveja.png', badge: '', category: 'Bebidas' },
       { id: 50, name: 'Suco 500ml', desc: 'Sabores: abacaxi com hortelã, acerola com laranja, maracujá, morango e tamarino', price: 10.00, img: 'suco.png', badge: '', category: 'Bebidas' },
-    ];
+];
 
 const menuContainer = document.getElementById('menu');
 
@@ -170,6 +413,19 @@ function displayMenu(items){
 }
 
 displayMenu(menuItems);
+
+// --- Filtro de categorias ---
+const buttons = document.querySelectorAll('.filter-buttons button');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const category = btn.dataset.category;
+    if (category === 'Todos') displayMenu(menuItems);
+    else displayMenu(menuItems.filter(item => item.category === category));
+  });
+});
 </script>
 
 </body>
