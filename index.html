@@ -748,6 +748,7 @@ border: 1.5px solid #ff8c00; /* borda um pouco mais suave */
   <button onclick="filterMenu('Porções')">Porções</button>
   <button onclick="filterMenu('Bebidas')">Bebidas</button>
   <button onclick="filterMenu('Sobremesa')">Sobremesa</button>
+  <button onclick="showAdicionais()">Adicionais</button> <!-- NOVO -->
 </div>
 
 <p class="balcao-msg">
@@ -792,7 +793,101 @@ border: 1.5px solid #ff8c00; /* borda um pouco mais suave */
   // Exibe os itens filtrados
   displayMenu(itemsToShow);
 }
+function showAdicionais() {
+  // Cria o overlay
+  const overlay = document.createElement('div');
+  Object.assign(overlay.style, {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    background: 'rgba(0,0,0,0.7)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 9999,
+    padding: '10px', // espaçamento para telas muito pequenas
+    boxSizing: 'border-box',
+  });
 
+  // Cria o container do modal
+  const modal = document.createElement('div');
+  Object.assign(modal.style, {
+    background: '#222',
+    padding: '20px',
+    borderRadius: '12px',
+    width: '100%',
+    maxWidth: '400px', // nunca ultrapassa 400px
+    maxHeight: '80vh', // ocupa no máximo 80% da altura da tela
+    color: '#fff',
+    overflowY: 'auto',
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px', // espaçamento entre itens
+  });
+
+  // Título
+  const titulo = document.createElement('h2');
+  titulo.textContent = 'Adicionais';
+  Object.assign(titulo.style, {
+    color: '#ff6600',
+    textAlign: 'center',
+    margin: 0,
+    fontSize: '1.5rem', // responsivo
+  });
+  modal.appendChild(titulo);
+
+  // Lista de adicionais
+  adicionais.forEach(item => {
+    const div = document.createElement('div');
+    Object.assign(div.style, {
+      display: 'flex',
+      justifyContent: 'space-between',
+      padding: '6px 0',
+      fontSize: '1rem',
+      flexWrap: 'wrap', // se a tela for pequena, o nome quebra linha
+    });
+    div.innerHTML = `<span>${item.name}</span> <span>R$ ${item.price.toFixed(2)}</span>`;
+    modal.appendChild(div);
+  });
+
+  // Botão de fechar
+  const closeBtn = document.createElement('button');
+  closeBtn.textContent = 'Fechar';
+  Object.assign(closeBtn.style, {
+    marginTop: '15px',
+    padding: '10px 16px',
+    border: 'none',
+    borderRadius: '8px',
+    background: '#ff6600',
+    color: '#000',
+    cursor: 'pointer',
+    fontWeight: '700',
+    alignSelf: 'center', // centraliza o botão
+    fontSize: '1rem',
+  });
+  closeBtn.onclick = () => document.body.removeChild(overlay);
+
+  modal.appendChild(closeBtn);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+}
+
+const adicionais = [
+  { name: 'Blend 150g', price: 8 },
+  { name: 'Bacon', price: 6 },
+  { name: 'Farofa de Bacon', price: 6 },
+  { name: 'Picles', price: 5 },
+  { name: 'Cebola Crispy', price: 5 },
+  { name: 'Anel de Cebola', price: 5 },
+  { name: 'Mussarela Empanada', price: 8 },
+  { name: 'Queijo Mussarela', price: 5 },
+  { name: 'Queijo Cheddar', price: 5 },
+  { name: 'Cheddar Cremoso', price: 8 },
+  { name: 'Salada Completa', price: 5 },
+];
 
 const menuItems = [
   // Clássicos
